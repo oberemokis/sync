@@ -20,4 +20,4 @@ function createModule<TApi, TQueries, TKeys>(
 }
 ```
 
-Упоминается в `.rules` как целевая фабрика для `packages/api/src/<entity>/index.ts`. **Сейчас не используется** — `packages/api` пока применяет обычные реэкспорты.
+Планировался как целевая фабрика для `packages/api/src/<entity>/index.ts` (описывалось в старой версии `.rules`). **Сейчас не используется** — `packages/api` пока применяет обычные реэкспорты.
