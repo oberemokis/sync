@@ -1,0 +1,86 @@
+# Правила стиля кода
+
+## Именование
+- Полные описательные имена — никаких однобуквенных переменных или параметров
+- `uiStore`, а не `ui`; `post`, а не `p`; `userId`, а не `id`
+- Имена функций точно описывают, что они делают: `filterPostsByUser`, `toggleUserSelection`
+
+### Префиксы функций
+| Префикс     | Что делает              | Примеры                           |
+| ----------- | ----------------------- | --------------------------------- |
+| `is`/`has`/`can` | Возвращает `boolean` | `isValid`, `hasPermission`, `canEdit` |
+| `handle`    | Обрабатывает событие     | `handleClick`, `handleSubmit`      |
+| `on`        | Реагирует на изменение   | `onRouteChange` (НЕ для Vue-хуков) |
+| `to`/`from`/`as` | Конвертирует данные | `toPostDto`, `fromApiResponse`     |
+| `fetch`/`load` | Загружает данные (I/O) | `fetchPosts`, `loadUser`           |
+| `make`/`create` | Фабрика             | `makePostService`, `createRouter`  |
+| `ensure`    | Валидация с пробросом ошибки | `ensureAuthenticated`              |
+| `with`      | Обёртка/расширение       | `withAuth`, `withPagination`       |
+| `build`/`parse`/`format` | Строит/разбирает/форматирует | `buildQuery`, `parseDate` |
+
+### Суффиксы типов и переменных
+| Суффикс       | Что обозначает                  | Примеры                       |
+| ------------- | ------------------------------- | ----------------------------- |
+| `*Props`/`*Emits` | Типы Vue-компонента        | `PostCardProps`, `FormEmits`   |
+| `*Store`      | Pinia-стор                      | `usePostsStore`               |
+| `*Service`    | Слой бизнес-логики / Effect-сервис | `PostsService`           |
+| `*Repository` | Слой доступа к данным            | `PostRepository`              |
+| `*Schema`     | Effect Schema                    | `PostSchema`                  |
+| `*Error`      | Typed error (TaggedError)       | `PostNotFoundError`           |
+| `*Layer`      | Effect-слой                      | `PostsLayer`                  |
+| `*Dto`/`*VO`  | DTO / Value Object               | `PostDto`, `UserVO`           |
+| `*Id`         | Идентификатор                    | `postId`, `userId`            |
+
+## Функции
+- Одна функция = одна задача (SRP)
+- Выделяйте чистые функции, когда логику можно изолировать
+
+## Импорты
+- Используйте алиас `@/`, указывающий на `./src`
+- Никаких относительных импортов (`../../`)
+
+## TypeScript
+- `interface` для публичных API / `type` для композиций и утилит
+- Избегать `as` (type assertion) — использовать type guards и narrowing
+- Экспорты всегда именованные (`export const`, не `export default`)
+- `readonly` на свойствах, которые не должны мутироваться извне
+
+## Effect-TS
+- Никаких «голых» промисов и try/catch — всегда `Effect.gen` или pipe
+- Сервисы через `Context.Tag` + слои, не через синглтоны
+- Ошибки — typed errors (`class MyError extends Data.TaggedError(...)`)
+- pipe/flow chain длиннее 3 шагов — разбивать на именованные промежуточные переменные
+
+## Vue / Composition API
+- `<script setup lang="ts">` везде
+- Порядок внутри `<script setup>`: imports → props/emits → composables → computed → methods → watchers
+- `defineProps` с TypeScript-дженериком, не с runtime-валидацией
+- Сложная логика из компонентов выносится в composables (`use*`)
+
+## Pinia-сторы
+- Setup-синтаксис (`defineStore('id', () => { ... })`)
+- Сторы экспортируются через `return { ... }` вертикально
+- Мутации состояния — только через экшены, не напрямую
+
+## Модули и файлы
+- Один паблик-экспорт на файл (кроме индексов-баррелей)
+- Файл ≤ 250 строк — больше → разбивать
+- Индекс-файлы (`index.ts`) только для ре-экспорта, без логики
+
+## Комментарии
+- Комментировать «почему», а не «что» — код сам читается
+- Не комментировать очевидное (`// увеличиваем счётчик` перед `count++`)
+- TODO/FIXME/HACK с датой и инициалами: `// TODO(2026-07): extract to composable`
+
+## Управление потоком
+- Guard clauses вместо вложенных if — ранний возврат для исключительных случаев
+- Избегать `else` после `return`
+
+## Константы
+- Никаких магических чисел и строк — выносить в именованные константы
+- Исключение: `0`, `1`, `-1` в тривиальных арифметических/индексных операциях
+
+## Git-коммиты
+- Автор коммита — только пользователь (данные из git config), никаких изменений author/committer
+- НИКОГДА не добавлять трейлеры `Co-authored-by`, `Generated with` и любую другую AI-атрибуцию в сообщения коммитов
+- НИКОГДА не использовать `git commit --no-verify` — хуки должны выполняться
