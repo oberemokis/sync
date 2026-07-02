@@ -12,17 +12,21 @@ subtask: true
 
 | Префикс     | Где менялось                                   |
 | ----------- | ---------------------------------------------- |
-| `ai:`       | OpenCode — скиллы, агенты, команды, `.opencode/*` |
-| `api:`      | Бэкенд — `apps/api/*`, `packages/api/*`        |
-| `web:`      | Фронтенд — `apps/web/*`                        |
-| `config:`   | Конфигурация — `packages/config/*`             |
-| `schemes:`  | Схемы — `packages/schemes/*`                   |
-| `stores:`   | Pinia-сторы — `packages/stores/*`              |
-| `ui:`       | UI-кит — `packages/ui/*`                       |
-| `utils:`    | Утилиты — `packages/utils/*`                   |
-| `style:`    | Правила стиля, форматирование — `.rules`       |
-| `wip:`      | Черновой коммит, будет переписан               |
-| `ignore:`   | Вспомогательные изменения, не влияющие на сборку |
+| `ai:`       | OpenCode — `.opencode/*`                                           |
+| `api:`      | Бэкенд — `apps/api/*`                                              |
+| `web:`      | Фронтенд — `apps/web/*`                                            |
+| `composable:` | Vue-композаблы — `packages/composables/*`                       |
+| `lib:`      | Библиотеки — `libs/*`                                              |
+| `config:`   | Конфигурация — `shared/config/*`                                   |
+| `schemes:`  | Схемы и фикстуры — `shared/schemes/*`, `shared/mocks/*`            |
+| `stores:`   | Pinia-сторы — `shared/stores/*`                                    |
+| `shared:`   | HTTP-клиент — `shared/api/*`                                       |
+| `ui:`       | UI-кит — `packages/ui/*`                                           |
+| `utils:`    | Утилиты — `packages/utils/*`                                       |
+| `test:`     | Тестовая инфраструктура — `packages/test/*`                        |
+| `style:`    | Правила стиля — `.rules`                                           |
+| `wip:`      | Черновой коммит, будет переписан                                    |
+| `ignore:`   | Вспомогательные изменения, не влияющие на сборку                    |
 
 Если изменения затронули несколько областей — сделай отдельный коммит на каждую область. Не смешивай `api:` и `web:` в одном коммите.
 
