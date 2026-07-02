@@ -8,6 +8,9 @@
   "exports": {
     ".": "./src/index.ts"
   },
+  "scripts": {
+    "typecheck": "vue-tsc --noEmit"
+  },
   "dependencies": {
     "vue": "^3.5.34"
   }
