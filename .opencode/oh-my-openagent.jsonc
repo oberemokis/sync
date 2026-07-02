@@ -1,0 +1,76 @@
+{
+  // Переопределение моделей для агентов.
+  "agent_overrides": {
+    "sisyphus": {
+      "model": "opencode/deepseek-v4-pro",
+      "reasoningEffort": "medium",
+    },
+    "hephaestus": {
+      "model": "opencode/deepseek-v4-pro",
+      "reasoningEffort": "high",
+    },
+    "prometheus": {
+      "model": "opencode/deepseek-v4-pro",
+      "reasoningEffort": "max",
+    },
+    "sisyphus-junior": {
+      "model": "kimi-k2.6",
+      "reasoningEffort": "medium",
+    },
+    "oracle": {
+      "model": "opencode/deepseek-v4-pro",
+      "reasoningEffort": "max",
+    },
+  },
+
+  // Переопределение категорий Sisyphus-Junior.
+  "categories": {
+    // ★★★★★ Сложная логика, архитектура.
+    "ultrabrain": {
+      "model": "opencode/deepseek-v4-pro",
+      "reasoningEffort": "max",
+    },
+
+    // ★★★★ Автономное исследование, комплексные задачи.
+    "deep": {
+      "model": "kimi-k2.7",
+      "reasoningEffort": "high",
+    },
+
+    // ★★★★ Креативные, нестандартные решения.
+    "artistry": {
+      "model": "minmax-m3",
+      "reasoningEffort": "medium",
+    },
+
+    // ★★★ UI/UX, стили, фронтенд.
+    "visual-engineering": {
+      "model": "minmax-m3",
+      "reasoningEffort": "low",
+    },
+
+    // ★★★ Средние задачи без категории.
+    "unspecified-high": {
+      "model": "kimi-k2.6",
+      "reasoningEffort": "medium",
+    },
+
+    // ★★ Документация, проза, техрайтинг.
+    "writing": {
+      "model": "glm-5.2",
+      "reasoningEffort": "minimal",
+    },
+
+    // ★ Простые задачи без категории.
+    "unspecified-low": {
+      "model": "glm-5.2",
+      "reasoningEffort": "minimal",
+    },
+
+    // ★ Опечатки, мелкие правки, один файл.
+    "quick": {
+      "model": "kimi-k2.6",
+      "reasoningEffort": "none",
+    },
+  },
+}
