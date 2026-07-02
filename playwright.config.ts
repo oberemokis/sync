@@ -1,5 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
-import { url } from "@sync/config";
+import { url } from "@buddy-play/config";
 
 const API_URL = url("api");
 const POSTS_URL = url("posts");
@@ -29,19 +29,19 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: "pnpm --filter @sync/posts-api dev",
+      command: "pnpm --filter @buddy-play/posts-api dev",
       url: `${API_URL}/health`,
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
     },
     {
-      command: "pnpm --filter @sync/posts dev",
+      command: "pnpm --filter @buddy-play/posts dev",
       url: POSTS_URL,
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
     },
     {
-      command: "pnpm --filter @sync/host dev",
+      command: "pnpm --filter @buddy-play/host dev",
       url: HOST_URL,
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,

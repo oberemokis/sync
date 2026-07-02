@@ -9,23 +9,23 @@
 ## Архитектура
 ```
 apps/
-  api/posts/            ← @sync/posts-api (бэкенд на Hono)   → apps/api/AGENTS.md
+  api/posts/            ← @buddy-play/posts-api (бэкенд на Hono)   → apps/api/AGENTS.md
   web/
-    host/               ← @sync/host (Vite-хост, 5173)      → apps/web/AGENTS.md
-    posts/              ← @sync/posts (Vite-ремоут, 5001)
+    host/               ← @buddy-play/host (Vite-хост, 5173)      → apps/web/AGENTS.md
+    posts/              ← @buddy-play/posts (Vite-ремоут, 5001)
 libs/                   ← переиспользуемые библиотеки
-  middleware/            ← @sync/middleware (middleware + guard)
+  middleware/            ← @buddy-play/middleware (middleware + guard)
 packages/               ← инфраструктурные пакеты
-  composables/          ← @sync/composables (Vue-композаблы)
-  test/                 ← @sync/test (утилиты для тестов)
-  ui/                   ← @sync/ui (UI-кит — пока пустой)
-  utils/                ← @sync/utils (хелперы, без зависимостей)
+  composables/          ← @buddy-play/composables (Vue-композаблы)
+  test/                 ← @buddy-play/test (утилиты для тестов)
+  ui/                   ← @buddy-play/ui (UI-кит — пока пустой)
+  utils/                ← @buddy-play/utils (хелперы, без зависимостей)
 shared/                 ← доменные пакеты (общие данные)
-  api/                  ← @sync/api (HTTP-клиент + Effect)
-  config/               ← @sync/config (топология портов/URL, манифест ремоутов)
-  mocks/                ← @sync/mocks (фикстуры для тестов)
-  schemes/              ← @sync/schemes (Effect Schema)
-  stores/               ← @sync/stores (Pinia, синглтон для MFE)
+  api/                  ← @buddy-play/api (HTTP-клиент + Effect)
+  config/               ← @buddy-play/config (топология портов/URL, манифест ремоутов)
+  mocks/                ← @buddy-play/mocks (фикстуры для тестов)
+  schemes/              ← @buddy-play/schemes (Effect Schema)
+  stores/               ← @buddy-play/stores (Pinia, синглтон для MFE)
 ```
 
 У каждого сервиса свой `AGENTS.md` с локальными деталями. OpenCode автоматически подгружает их, поднимаясь от рабочей директории вверх.
@@ -37,7 +37,7 @@ shared/                 ← доменные пакеты (общие данны
 - `pnpm dev:api` — только бэкенд (posts-api)
 - `pnpm test` — все юнит-тесты (Turbo, Vitest по пакетам)
 - `pnpm test:e2e` — e2e-тесты (Playwright: поднимает host + posts + api)
-- `pnpm gen:remotes` — сгенерировать типы ремоутов (`host/src/remotes.d.ts`) из манифеста в `@sync/config`
+- `pnpm gen:remotes` — сгенерировать типы ремоутов (`host/src/remotes.d.ts`) из манифеста в `@buddy-play/config`
 
 ### Команды по пакетам
 - Typecheck бэкенда: `pnpm typecheck` (из `apps/api/posts/`, запускает `tsc --noEmit`)

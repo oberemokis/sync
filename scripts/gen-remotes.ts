@@ -1,6 +1,6 @@
 /**
  * Генерирует apps/web/host/src/remotes.d.ts из манифеста ремоутов
- * @sync/config. Запускается через `pnpm gen:remotes` (также привязан к predev/prebuild).
+ * @buddy-play/config. Запускается через `pnpm gen:remotes` (также привязан к predev/prebuild).
  *
  * Типы реэкспортируются из реального исходного кода каждого ремоута (только типы,
  * стирается при сборке), поэтому `import("posts/PostList")` в хосте типизируется
@@ -9,7 +9,7 @@
 import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { relative } from "node:path";
-import { remotes, remoteDir, type RemoteName } from "@sync/config";
+import { remotes, remoteDir, type RemoteName } from "@buddy-play/config";
 
 const repoRoot = fileURLToPath(new URL("..", import.meta.url));
 const hostSrc = `${repoRoot}apps/web/host/src`;
@@ -34,7 +34,7 @@ function blocks(): string[] {
 
 const header = [
   "// АВТОГЕНЕРАЦИЯ через scripts/gen-remotes.ts — не редактировать.",
-  "// Запустите `pnpm gen:remotes` после изменения манифеста ремоутов в @sync/config.",
+  "// Запустите `pnpm gen:remotes` после изменения манифеста ремоутов в @buddy-play/config.",
   "// В рантайме они загружаются через Module Federation; типы берутся из исходного",
   "// кода каждого ремоута (только типы — стирается при сборке, без связи в рантайме).",
 ];
