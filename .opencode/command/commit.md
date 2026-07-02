@@ -1,6 +1,6 @@
 ---
 description: git commit без push
-agent: committer
+agent: sisyphus-junior
 subtask: true
 ---
 

@@ -1,110 +1,110 @@
 {
   // Переопределение моделей для агентов.
-  "agent_overrides": {
+  "agents": {
     "sisyphus": {
       "model": "opencode/deepseek-v4-pro",
       "reasoningEffort": "medium",
       "displayName": "Nexus",
-      "description": "Central orchestrator. Plans, decomposes tasks, delegates to specialist agents, controls quality. Does not write code — ensures everything works together."
+      "description": "Центральный оркестратор. Планирует, декомпозирует задачи, делегирует агентам-специалистам, контролирует качество. Не пишет код — обеспечивает слаженную работу всей системы.",
     },
     "hephaestus": {
       "model": "opencode/deepseek-v4-pro",
       "reasoningEffort": "high",
       "displayName": "Forge",
-      "description": "Autonomous deep worker. Receives a goal, explores the codebase, researches patterns, and executes end-to-end without hand-holding."
+      "description": "Автономный deep-исполнитель. Получает цель, исследует кодовую базу, изучает паттерны и выполняет задачу от начала до конца без микроменеджмента.",
     },
     "prometheus": {
       "model": "opencode/deepseek-v4-pro",
       "reasoningEffort": "max",
       "displayName": "Architect",
-      "description": "Strategic planner. Interviews, clarifies requirements, and builds a detailed blueprint before a single line of code is touched."
+      "description": "Стратегический планировщик. Проводит интервью, уточняет требования и строит детальный план до того, как написана хоть одна строка кода.",
     },
     "sisyphus-junior": {
-      "model": "kimi-k2.6",
+      "model": "opencode/kimi-k2.6",
       "reasoningEffort": "medium",
       "displayName": "Drone",
-      "description": "Focused executor. Receives an atomic task with clear boundaries and executes it. No planning, no delegation — pure execution."
+      "description": "Сфокусированный исполнитель. Получает атомарную задачу с чёткими границами и выполняет её. Без планирования, без делегирования — чистое исполнение. Используется в том числе для git-коммитов.",
     },
     "oracle": {
       "model": "opencode/deepseek-v4-pro",
       "reasoningEffort": "max",
       "displayName": "Oracle",
-      "description": "Read-only consultant. Handles complex system architecture, finds root causes of bugs, provides high-IQ reasoning on hard problems."
+      "description": "Консультант только для чтения. Разбирается в сложной архитектуре, находит корневые причины багов, даёт высокоуровневые рассуждения по трудным проблемам.",
     },
     "metis": {
-      "model": "kimi-k2.7",
+      "model": "opencode/kimi-k2.7",
       "reasoningEffort": "high",
       "displayName": "Scanner",
-      "description": "Pre-planning analyst. Scans requests before planning to identify hidden intentions, ambiguities, and potential AI failure points."
+      "description": "Аналитик перед планированием. Сканирует запросы до начала планирования, выявляя скрытые намерения, неоднозначности и потенциальные точки сбоя AI.",
     },
     "momus": {
-      "model": "kimi-k2.7",
+      "model": "opencode/kimi-k2.7",
       "reasoningEffort": "high",
       "displayName": "Audit",
-      "description": "Plan and quality critic. Evaluates work plans and results against clarity, verifiability, and completeness standards. Ruthless with gaps."
+      "description": "Критик планов и качества. Оценивает планы работ и результаты по критериям ясности, проверяемости и полноты. Беспощаден к пробелам.",
     },
     "explore": {
-      "model": "kimi-k2.6",
+      "model": "opencode/kimi-k2.6",
       "reasoningEffort": "minimal",
       "displayName": "Scout",
-      "description": "Fast codebase grep. Answers: where is X? which file has Y? find the code that does Z. Lightweight and parallel."
+      "description": "Быстрый grep по кодовой базе. Отвечает на вопросы: где находится X? в каком файле Y? найди код, который делает Z. Лёгкий и параллельный.",
     },
     "librarian": {
-      "model": "kimi-k2.6",
+      "model": "opencode/kimi-k2.6",
       "reasoningEffort": "minimal",
       "displayName": "Archive",
-      "description": "External knowledge search. Searches documentation, GitHub, and web for library usage examples, best practices, and API references."
-    }
+      "description": "Поиск внешних знаний. Ищет документацию, GitHub и веб для примеров использования библиотек, лучших практик и справки по API.",
+    },
   },
 
   // Переопределение категорий Sisyphus-Junior.
   "categories": {
-    // ★★★★★ Сложная логика, архитектура.
+    // ★★★★★ Сложная логика, архитектура, длинный контекст.
     "ultrabrain": {
-      "model": "opencode/deepseek-v4-pro",
-      "reasoningEffort": "max"
+      "model": "opencode/glm-5.2",
+      "reasoningEffort": "max",
     },
 
-    // ★★★★ Автономное исследование, комплексные задачи.
+    // ★★★★ Автономный TypeScript-кодинг, генерация, рефакторинг.
     "deep": {
-      "model": "kimi-k2.7",
-      "reasoningEffort": "high"
+      "model": "opencode/kimi-k2.6",
+      "reasoningEffort": "high",
     },
 
     // ★★★★ Креативные, нестандартные решения.
     "artistry": {
-      "model": "minmax-m3",
-      "reasoningEffort": "medium"
+      "model": "opencode/minmax-m3",
+      "reasoningEffort": "medium",
     },
 
-    // ★★★ UI/UX, стили, фронтенд.
+    // ★★★ UI/UX, стили, фронтенд, vibe coding.
     "visual-engineering": {
-      "model": "minmax-m3",
-      "reasoningEffort": "low"
+      "model": "opencode/kimi-k2.6",
+      "reasoningEffort": "medium",
     },
 
     // ★★★ Средние задачи без категории.
     "unspecified-high": {
-      "model": "kimi-k2.6",
-      "reasoningEffort": "medium"
+      "model": "opencode/kimi-k2.6",
+      "reasoningEffort": "medium",
     },
 
     // ★★ Документация, проза, техрайтинг.
     "writing": {
-      "model": "glm-5.2",
-      "reasoningEffort": "minimal"
+      "model": "opencode/glm-5.2",
+      "reasoningEffort": "minimal",
     },
 
-    // ★ Простые задачи без категории.
+    // ★ Простые задачи без категории, стабильный ежедневный TS.
     "unspecified-low": {
-      "model": "glm-5.2",
-      "reasoningEffort": "minimal"
+      "model": "opencode/qwen-3",
+      "reasoningEffort": "minimal",
     },
 
     // ★ Опечатки, мелкие правки, один файл.
     "quick": {
-      "model": "kimi-k2.6",
-      "reasoningEffort": "none"
-    }
-  }
+      "model": "opencode/kimi-k2.6",
+      "reasoningEffort": "none",
+    },
+  },
 }

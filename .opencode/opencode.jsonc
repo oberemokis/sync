@@ -3,16 +3,5 @@
   "model": "opencode/deepseek-v4-pro",
   "instructions": [".rules"],
   "plugin": ["oh-my-openagent", "opencode-background-agents"],
-  "lsp": true,
-  "agent": {
-    "committer": {
-      "mode": "subagent",
-      "model": "opencode/kimi-k2.5",
-      "description": "Делает git-коммиты по правилам проекта. Не пушит и не редактирует файлы.",
-      "tools": {
-        "write": false,
-        "edit": false,
-      },
-    },
-  },
+  "lsp": true
 }
