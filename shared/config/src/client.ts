@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import { Schema } from "effect";
 import { url } from "./services.ts";
 
